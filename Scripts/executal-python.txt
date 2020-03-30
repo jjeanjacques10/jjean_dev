@@ -1,0 +1,10 @@
+# Author: Jean J Barros
+# Github: https://github.com/jjeanjacques10/
+
+# --- Convertendo .py para .exe ---
+
+# Abra o CMD ou o terminal
+
+C:\>pip install pyinstaller
+  
+C:\>pyinstaller filename.py
