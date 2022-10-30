@@ -1,5 +1,5 @@
-## Author: Jean Jacques Barros
-## Github: https://github.com/jjeanjacques10
+# Author: Jean Jacques Barros
+# Github: https://github.com/jjeanjacques10
 from time import sleep
 import requests
 from win10toast import ToastNotifier
@@ -15,15 +15,16 @@ def get_data():
     return data
 
 
-def create_message(candidates):
+def create_message(candidates, status):
     text = ""
     for candidate in candidates:
         name = candidate.get("nm")
         votes = candidate.get("pvap")
         text = text + f"{name} - {votes}% \n"
+    text = text + f"\n Seções apuradas: {status}%"
 
-    toaster = ToastNotifier()
-    toaster.show_toast("Resultados Eleições", text, duration=50)
+    toaster=ToastNotifier()
+    toaster.show_toast("Resultados Eleições", text, duration = 50)
     print(text)
 
 
@@ -33,18 +34,13 @@ def is_recent(data):
 
 def main():
     while True:
-        results = get_data()
+        results=get_data()
         if is_recent(results["hg"]):
-            create_message(results["cand"])
-            LAST_READ = results["hg"]
+            create_message(results["cand"], results["pst"])
+            LAST_READ=results["hg"]
             print("Última atualização: ", LAST_READ)
         sleep(60)
 
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
