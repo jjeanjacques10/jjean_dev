@@ -23,7 +23,7 @@ def create_message(candidates):
         text = text + f"{name} - {votes}% \n"
 
     toaster = ToastNotifier()
-    toaster.show_toast("Resultados Eleições", text, duration=10)
+    toaster.show_toast("Resultados Eleições", text, duration=50)
     print(text)
 
 
